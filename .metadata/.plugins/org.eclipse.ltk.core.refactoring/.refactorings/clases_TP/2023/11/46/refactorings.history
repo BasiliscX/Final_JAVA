@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Equipo.java&apos; to &apos;pronosticoJuegos/src/main/java/com.tp_final.pronosticos_deporitvos.pronosticoJuegos.clases&apos;&#x0D;&#x0A;- Original project: &apos;clases_TP&apos;&#x0D;&#x0A;- Destination element: &apos;pronosticoJuegos/src/main/java/com.tp_final.pronosticos_deporitvos.pronosticoJuegos.clases&apos;&#x0D;&#x0A;- Original element: &apos;clases_TP.pronostico.Equipo.java&apos;" description="Copy compilation unit" destination="=pronosticoJuegos/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.tp_final.pronosticos_deporitvos.pronosticoJuegos.clases" element1="/src&lt;clases_TP.pronostico{Equipo.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1699737941600" units="1" version="1.0"/>
+</session>
