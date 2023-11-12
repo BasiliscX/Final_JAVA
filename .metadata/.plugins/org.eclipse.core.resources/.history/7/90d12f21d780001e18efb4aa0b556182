@@ -1,6 +1,0 @@
-package clases_TP.pronostico;
-
-public class Equipo {
-	String nombre;
-	String descripcion;
-}

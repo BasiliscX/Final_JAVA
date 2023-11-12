@@ -1,17 +1,23 @@
-package com.tp_final.pronosticos_deporitvos.pronosticoJuegos.clases;
+package com.tp_final.pronosticos_deporitvos.pronosticoJuegos.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 
 public class Ronda {
-	@Getter @Setter
-	private int nro;
+	private String nro;
 	private List<Partido> partido;
 	
 	public Ronda() {
 		this.partido=new ArrayList<Partido>();
+	}
+	
+	public String toString() {
+		return this.nro + partido.toString();
+	}
+	
+	public Ronda(String nro, List<Partido> partidos) {
+		setNro(nro);
+		this.partido=partidos;
 	}
 	public void agregarPartido(Partido partido) {
 		this.partido.add(partido);
@@ -21,5 +27,11 @@ public class Ronda {
 	}
 	public List<Partido> getPartidos(){
 		return this.partido;
+	}
+	public String getNro() {
+		return nro;
+	}
+	public void setNro(String nro) {
+		this.nro = nro;
 	}
 }
