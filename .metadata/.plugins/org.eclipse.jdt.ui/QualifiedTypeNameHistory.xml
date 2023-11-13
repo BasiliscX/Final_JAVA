@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="com.tp_final.pronosticos_deporitvos.pronosticoJuegos.models.Ronda"/>
-    <fullyQualifiedTypeName name="com.tp_final.pronosticos_deporitvos.pronosticoJuegos.utils.ManejadorDeArchivos"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
-</qualifiedTypeNameHistroy>
