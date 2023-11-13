@@ -9,6 +9,7 @@ import com.tp_final.pronosticos_deporitvos.pronosticoJuegos.utils.ManejadorDeArc
 public class App {
 
     public static void main(String[] args) {
+    	/**
         // Hardcodeo de archivos de entrada.
         String csvResultados = "resources/resultados.csv";
         String csvPronosticos = "resources/pronosticos.csv";
@@ -22,5 +23,7 @@ public class App {
         } catch (Exception e) {
             System.out.println("Error al leer archivo: " + e.getMessage());
         }
+    	 * */
+    	
     }
 }

@@ -3,6 +3,10 @@ package com.tp_final.pronosticos_deporitvos.pronosticoJuegos.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class Ronda {
 	private String nro;
 	private List<Partido> partido;
@@ -27,11 +31,5 @@ public class Ronda {
 	}
 	public List<Partido> getPartidos(){
 		return this.partido;
-	}
-	public String getNro() {
-		return nro;
-	}
-	public void setNro(String nro) {
-		this.nro = nro;
 	}
 }

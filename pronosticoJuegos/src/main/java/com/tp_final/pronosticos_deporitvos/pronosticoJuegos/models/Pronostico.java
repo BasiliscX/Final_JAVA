@@ -1,5 +1,9 @@
 package com.tp_final.pronosticos_deporitvos.pronosticoJuegos.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class Pronostico {
 	private Partido partido;
 	private Equipo equipo;
@@ -18,23 +22,5 @@ public class Pronostico {
 	public int puntos() {
 		int puntos=0;
 		return puntos;
-	}
-	public Partido getPartido() {
-		return partido;
-	}
-	public void setPartido(Partido partido) {
-		this.partido = partido;
-	}
-	public Equipo getEquipo() {
-		return equipo;
-	}
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
-	}
-	public ResultadoEnum getResultado() {
-		return resultado;
-	}
-	public void setResultado(ResultadoEnum resultado) {
-		this.resultado = resultado;
 	}
 }

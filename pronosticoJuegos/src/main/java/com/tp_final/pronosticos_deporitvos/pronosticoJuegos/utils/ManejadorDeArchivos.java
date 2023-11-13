@@ -1,5 +1,5 @@
 package com.tp_final.pronosticos_deporitvos.pronosticoJuegos.utils;
-
+/**
 import com.tp_final.pronosticos_deporitvos.pronosticoJuegos.models.*;
 
 import com.opencsv.CSVReader;
@@ -10,10 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+ * */
 
 public class ManejadorDeArchivos {
+	/**
 
-	@SuppressWarnings("resource")
+//	@SuppressWarnings("resource")
 	private static List<String[]> getRecords(String fileName) throws IOException, CsvException {
         return (new CSVReader( new FileReader(fileName) )).readAll();
     }
@@ -93,4 +95,5 @@ public class ManejadorDeArchivos {
     }
 
 
+ * */
 }
