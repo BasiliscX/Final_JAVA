@@ -1,0 +1,63 @@
+use master
+go
+create database PRONOSTICOS_DB
+go
+USE PRONOSTICOS_DB
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PAISES](
+    [Id] [int] IDENTITY(1,1) NOT NULL,
+    [Nombre] [varchar](100) NOT NULL,
+    CONSTRAINT [PK_PAISES] PRIMARY KEY CLUSTERED([Id] ASC)
+);
+go
+USE PRONOSTICOS_DB
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RESULTADOS](
+    [Id] [int] IDENTITY(1,1) NOT NULL,
+    [Grupo] [char](1) NOT NULL,
+    [ID_Equipo_1] [int] NOT NULL,
+    [Cantidad_goles_1] [int] NOT NULL,
+    [ID_Equipo_2] [int] NOT NULL,
+    [Cantidad_goles_2] [int] NOT NULL,
+    CONSTRAINT [PK_RESULTADOS] PRIMARY KEY CLUSTERED([Id] ASC),
+    CONSTRAINT [FK_ID_Equipo1] FOREIGN KEY ([ID_Equipo_1]) REFERENCES [dbo].[PAISES]([Id]),
+    CONSTRAINT [FK_ID_Equipo2] FOREIGN KEY ([ID_Equipo_2]) REFERENCES [dbo].[PAISES]([Id])
+);
+GO
+USE PRONOSTICOS_DB
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PARTICIPANTES](
+    [Id] [int] IDENTITY(1,1) NOT NULL,
+    [Nombre] [varchar](100) NOT NULL,
+    CONSTRAINT [PK_PARTICIPANTES] PRIMARY KEY CLUSTERED([Id] ASC)
+);
+GO
+USE PRONOSTICOS_DB
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PRONOSTICOS](
+    [Id] [int] IDENTITY(1,1) NOT NULL,
+    [ID_Participante] [int] NOT NULL,
+    [ID_Resultado] [int] NOT NULL,
+    [ID_Equipo] [int] NOT NULL,
+    [Opcion_G_E_P] [char](1) NOT NULL,
+    CONSTRAINT [PK_PRONOSTICOS] PRIMARY KEY CLUSTERED([Id] ASC),
+    CONSTRAINT [FK_ID_Participante_Pronosticos] FOREIGN KEY ([ID_Participante]) REFERENCES [dbo].[PARTICIPANTES]([Id]),
+    CONSTRAINT [FK_ID_Resultado_Pronosticos] FOREIGN KEY ([ID_Resultado]) REFERENCES [dbo].[RESULTADOS]([Id]),
+    CONSTRAINT [FK_ID_Equipo_Pronosticos] FOREIGN KEY ([ID_Equipo]) REFERENCES [dbo].[PAISES]([Id])
+);

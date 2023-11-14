@@ -1,48 +1,26 @@
 package models;
 
+/**
+ 	Para usar en la tabla PRONOSTICOS
+ 	
+    [Id] [int] IDENTITY(1,1) NOT NULL,
+    [ID_Participante] [int] NOT NULL,
+    [ID_Resultado] [int] NOT NULL,
+    [ID_Equipo] [int] NOT NULL,
+    [Opcion_G_E_P] [char](1) NOT NULL,
+    CONSTRAINT [PK_PRONOSTICOS] PRIMARY KEY CLUSTERED([Id] ASC),
+    CONSTRAINT [FK_ID_Participante_Pronosticos] FOREIGN KEY ([ID_Participante]) REFERENCES [dbo].[PARTICIPANTES]([Id]),
+    CONSTRAINT [FK_ID_Resultado_Pronosticos] FOREIGN KEY ([ID_Resultado]) REFERENCES [dbo].[RESULTADOS]([Id]),
+    CONSTRAINT [FK_ID_Equipo_Pronosticos] FOREIGN KEY ([ID_Equipo]) REFERENCES [dbo].[PAISES]([Id])
+ */
 public class Pronostico {
+	private int ID;
+	private Participante participante;
 	private Partido partido;
 	private Equipo equipo;
-	private ResultadoEnum resultado;
+	private char opcion;
 	
-	public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
-		setPartido(partido);
-		setEquipo(equipo);
-		setResultado(resultado);
-	}
 	public int puntos() {
-		//Evaluo el nro de equipo con el ingresado
-		if(partido.getEquipo1().getNombre().equalsIgnoreCase(equipo.getNombre())) {
-			// Evaluo el resultado final con el pronosticado
-			if(partido.getGolesEquipo1()>partido.getGolesEquipo2()) {
-				resultado=ResultadoEnum.GANADOR;
-				return 1;
-			}
-			else if(partido.getGolesEquipo1()==partido.getGolesEquipo2()) {
-				resultado=ResultadoEnum.EMPATE;
-				return 0;
-			}
-			else {
-				resultado=ResultadoEnum.PERDEDOR;
-				return -1;
-			}
-		}
-		//Evaluo el nro de equipo con el ingresado
-		if(partido.getEquipo2().getNombre().equalsIgnoreCase(equipo.getNombre())) {
-			// Evaluo el resultado final con el pronosticado
-			if(partido.getGolesEquipo2()>partido.getGolesEquipo1()) {
-				resultado=ResultadoEnum.GANADOR;
-				return 1;
-			}
-			else if(partido.getGolesEquipo2()==partido.getGolesEquipo1()) {
-				resultado=ResultadoEnum.EMPATE;
-				return 0;
-			}
-			else {
-				resultado=ResultadoEnum.PERDEDOR;
-				return -1;
-			}
-		}
 		return -2;// HUBO UN ERROR DE LECTURA/COMPARACION
 	}
 
@@ -62,16 +40,26 @@ public class Pronostico {
 		this.equipo = equipo;
 	}
 
-	public ResultadoEnum getResultado() {
-		return resultado;
+	public Participante getParticipante() {
+		return participante;
+	}
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
 	}
 
-	public void setResultado(ResultadoEnum resultado) {
-		this.resultado = resultado;
+	public int getID() {
+		return ID;
 	}
 
-	
-	public String toString() {
-		return partido.ToString() + equipo.toString() + resultado;
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public char getOpcion() {
+		return opcion;
+	}
+
+	public void setOpcion(char opcion) {
+		this.opcion = opcion;
 	}
 }

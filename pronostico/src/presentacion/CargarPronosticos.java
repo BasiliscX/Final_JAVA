@@ -116,7 +116,7 @@ public class CargarPronosticos extends JFrame {
 				// CREO UNA INSTANCIA DE PARITDO PARA PROBAR:
 				Equipo prueba1=new Equipo("Argentina");
 				Equipo prueba2=new Equipo("Arabia Saudita");
-				Partido partido=new Partido(prueba1,prueba2,1,2);
+				//Partido partido=new Partido(prueba1,prueba2,1,2);
 				// CREO UNA INSTANCIA DE PRONOSTICO PARA PROBAR:
 				//Pronostico pronosticoPrueba=new Pronostico(partido,);
 				
