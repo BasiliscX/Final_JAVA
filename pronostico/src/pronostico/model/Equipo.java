@@ -1,4 +1,4 @@
-package models;
+package pronostico.model;
 
 /**
  * Para trabajar con los datos en

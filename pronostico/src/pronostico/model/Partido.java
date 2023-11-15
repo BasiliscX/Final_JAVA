@@ -1,4 +1,4 @@
-package models;
+package pronostico.model;
 
 /**
  * 	Para trabajar con la tabla RESULTADOS

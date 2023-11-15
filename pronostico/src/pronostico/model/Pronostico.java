@@ -1,4 +1,4 @@
-package models;
+package pronostico.model;
 
 /**
  	Para usar en la tabla PRONOSTICOS

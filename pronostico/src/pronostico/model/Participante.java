@@ -1,4 +1,4 @@
-package models;
+package pronostico.model;
 
 /**
  	Para usar con PARTICIPANTES
