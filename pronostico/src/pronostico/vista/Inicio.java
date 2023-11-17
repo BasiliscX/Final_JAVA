@@ -1,22 +1,38 @@
 package pronostico.vista;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JMenuBar;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JToolBar;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import pronostico.model.Equipo;
+import pronostico.model.Participante;
+import pronostico.model.Partido;
+import javax.swing.JTable;
 
 public class Inicio extends JFrame {
 
+	// Para guardar las listas del constructor
+	private List<Participante> participantes;
+	private List<Equipo> equipos;
+	private List<Partido> partidos;
+	private JTable tablaPersonas;
+	
 	private static final long serialVersionUID = 1L;
 	JPanel contentPane;
-
-	public Inicio(/*Deberia recibir en lista los participantes, los paises de la copa, y los resultados*/) {
+	public Inicio(List<Participante> participantes, List<Equipo> equipos, List<Partido> partidos) {
 		setTitle("Inicio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 805, 471);
@@ -26,6 +42,15 @@ public class Inicio extends JFrame {
 		setLocationRelativeTo(null);// Centra la ventana
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		// Para mostrar en tablas:
+		this.participantes=new ArrayList<Participante>();
+		this.participantes=participantes;
+		this.equipos=new ArrayList<Equipo>();
+		this.equipos=equipos;
+		this.partidos=new ArrayList<Partido>();
+		this.partidos=partidos;
+		
 		MenuBarSuperiorComponentes();
 	}
 
@@ -108,5 +133,6 @@ public class Inicio extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_ListarPartidosPorCantidadDeGolesTotalesDelPartido = new JMenuItem("Por cantidad de goles totales");
 		mnNewMenu_PartidosJugados_listar.add(mntmNewMenuItem_ListarPartidosPorCantidadDeGolesTotalesDelPartido);
+				
 	}
 }

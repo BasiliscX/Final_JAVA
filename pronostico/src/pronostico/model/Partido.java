@@ -21,7 +21,8 @@ public class Partido {
 	private Equipo equipo2;
 	private int golesEquipo2;
 
-	public Partido(char grupo, Equipo equipo1, int golesEquipo1, Equipo equipo2, int golesEquipo2) {
+	public Partido(int ID, char grupo, Equipo equipo1, int golesEquipo1, Equipo equipo2, int golesEquipo2) {
+		setID(ID);
 		setGrupo(grupo);
 		setEquipo1(equipo1);
 		setGolesEquipo1(golesEquipo1);

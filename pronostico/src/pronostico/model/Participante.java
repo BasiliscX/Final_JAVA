@@ -10,6 +10,11 @@ package pronostico.model;
 public class Participante {
 	private int ID;
 	private String nombre;
+	
+	public Participante(int ID, String nombre) {
+		this.ID=ID;
+		this.nombre=nombre;
+	}
 
 	public int getID() {
 		return ID;
