@@ -52,16 +52,33 @@ public class Inicio extends JFrame {
 		this.partidos=partidos;
 		
 		MenuBarSuperiorComponentes();
+		
 	}
-
+	
+	//Variables para ser usadas por los metodos
+	private JMenuBar menuBarSuperior = new JMenuBar();
+	private JMenu mnNewMenuparticipantes = new JMenu("Participantes");
+	private JMenu mnNewMenuEquipos = new JMenu("Equipos");
+	private JMenu mnNewMenu_Equipos_listar = new JMenu("LIstar");
+	private JMenu mnNewMenu_2Participantes = new JMenu("Acciones");
+	private JMenu mnNewMenu_Pronostico = new JMenu("Acciones");
+	
+	
 	private void MenuBarSuperiorComponentes() {
-		JMenuBar menuBarSuperior = new JMenuBar();
 		menuBarSuperior.setBounds(0, 0, 789, 30);
-		JMenu mnNewMenuparticipantes = new JMenu("Participantes");
-		
-		JMenu mnNewMenu_2Participantes = new JMenu("Acciones");
+		Participantes();
+		Pronostico();
+		Equipos();
+		PartidosJugados();
+	}	
+	
+	private void Participantes() {
 		mnNewMenuparticipantes.add(mnNewMenu_2Participantes);
-		
+		AgregarParticipante();
+		ListarParticipantes();
+	}
+	
+	private void AgregarParticipante() {
 		JMenuItem mntmNewMenuItemAgregarParticipante = new JMenuItem("Agregar participante");
 		mntmNewMenuItemAgregarParticipante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -70,17 +87,24 @@ public class Inicio extends JFrame {
 			}
 		});
 		mnNewMenu_2Participantes.add(mntmNewMenuItemAgregarParticipante);
-		
+	}
+	
+	private void ListarParticipantes() {
 		JMenuItem mntmNewMenuItem_ListarParticipantes = new JMenuItem("Listar participantes");
 		mnNewMenu_2Participantes.add(mntmNewMenuItem_ListarParticipantes);
-		
+	}
+	
+	private void Pronostico() {
 		JMenu mnPronostico = new JMenu("Pronostico");
 		menuBarSuperior.add(mnNewMenuparticipantes);
 		menuBarSuperior.add(mnPronostico);
 		
-		JMenu mnNewMenu_Pronostico = new JMenu("Acciones");
 		mnPronostico.add(mnNewMenu_Pronostico);
-		
+		AgregarPronostico();
+		ListarPronostico();
+	}
+	
+	private void AgregarPronostico() {
 		JMenuItem mntmAgregarPronostico = new JMenuItem("Agregar pronostico");
 		mntmAgregarPronostico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,18 +113,23 @@ public class Inicio extends JFrame {
 			}
 		});
 		mnNewMenu_Pronostico.add(mntmAgregarPronostico);
-		
+	}
+	
+	private void ListarPronostico() {		
 		JMenuItem mntmNewMenuItem_ListarPronosticos = new JMenuItem("Listar pronosticos");
 		mnNewMenu_Pronostico.add(mntmNewMenuItem_ListarPronosticos);
 		
 		contentPane.add(menuBarSuperior);
-		
-		JMenu mnNewMenuEquipos = new JMenu("Equipos");
+	}
+	
+	private void Equipos() {
 		menuBarSuperior.add(mnNewMenuEquipos);
-		
-		JMenu mnNewMenu_Equipos_listar = new JMenu("LIstar");
 		mnNewMenuEquipos.add(mnNewMenu_Equipos_listar);
-		
+		EquiposOrdenAlfabetico();
+		EquiposOrdenCantidadGoles();
+	}
+	
+	private void EquiposOrdenAlfabetico() {
 		JMenu mnNewMenuEquiposAlfabetico = new JMenu("Por orden alfabetico");
 		mnNewMenu_Equipos_listar.add(mnNewMenuEquiposAlfabetico);
 		
@@ -109,6 +138,9 @@ public class Inicio extends JFrame {
 		
 		JMenuItem mntmNewMenuItemEquiposAlfabeticoDescendente = new JMenuItem("Descendente");
 		mnNewMenuEquiposAlfabetico.add(mntmNewMenuItemEquiposAlfabeticoDescendente);
+	}
+	
+	private void EquiposOrdenCantidadGoles() {
 		
 		JMenu mnNewMenuEquiposCantidadGoles = new JMenu("Por cantidad de goles");
 		mnNewMenu_Equipos_listar.add(mnNewMenuEquiposCantidadGoles);
@@ -118,10 +150,15 @@ public class Inicio extends JFrame {
 		
 		JMenuItem mntmNewMenuItemEquiposCantidadGolesDescendente = new JMenuItem("Descendente");
 		mnNewMenuEquiposCantidadGoles.add(mntmNewMenuItemEquiposCantidadGolesDescendente);
+	}
+	
+	private void PartidosJugados() {
 		
 		JMenuBar menuBar = new JMenuBar();
 		mnNewMenu_Equipos_listar.add(menuBar);
-		
+		ListarPartidosJugados();
+	}	
+	private void ListarPartidosJugados() {
 		JMenu mnNewMenupartido = new JMenu("Partidos jugados");
 		menuBarSuperior.add(mnNewMenupartido);
 		
@@ -133,6 +170,7 @@ public class Inicio extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_ListarPartidosPorCantidadDeGolesTotalesDelPartido = new JMenuItem("Por cantidad de goles totales");
 		mnNewMenu_PartidosJugados_listar.add(mntmNewMenuItem_ListarPartidosPorCantidadDeGolesTotalesDelPartido);
-				
 	}
+	
 }
+

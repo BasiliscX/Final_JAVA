@@ -29,11 +29,20 @@ public class CargarParticipantes extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		MenuParticipante();
+		EtiquetaNombre();
+		BotonCancelar();
+		BotonAceptar();
+	}
+	
+	private void MenuParticipante() {
 		JLabel lblNewLabel = new JLabel("Participante");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel.setBounds(27, 11, 186, 62);
 		contentPane.add(lblNewLabel);
-		
+	}
+	
+	private void EtiquetaNombre(){
 		JLabel lblParticipanteNombre = new JLabel("Nombre");
 		lblParticipanteNombre.setBounds(10, 95, 46, 14);
 		contentPane.add(lblParticipanteNombre);
@@ -42,7 +51,9 @@ public class CargarParticipantes extends JFrame {
 		textField.setBounds(56, 92, 157, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+	}
+	
+	private void BotonCancelar(){
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,15 +62,18 @@ public class CargarParticipantes extends JFrame {
 		});
 		btnCancelar.setBounds(10, 138, 89, 23);
 		contentPane.add(btnCancelar);
-		
-		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(137, 138, 89, 23);
-		contentPane.add(btnAceptar);
 	}
+	
 	public void cerrarPanel() {
         int opcion = JOptionPane.showConfirmDialog(this, "¿Estás seguro de cancelar la carga?", "Confirmar Cierre", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
         	dispose();
         }
     }
+	
+	private void BotonAceptar() {
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(137, 138, 89, 23);
+		contentPane.add(btnAceptar);
+	}
 }
