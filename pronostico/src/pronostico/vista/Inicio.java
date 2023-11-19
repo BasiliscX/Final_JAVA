@@ -70,6 +70,7 @@ public class Inicio extends JFrame {
 		Pronostico();
 		Equipos();
 		PartidosJugados();
+		listarTodo();
 	}	
 	
 	private void Participantes() {
@@ -92,6 +93,11 @@ public class Inicio extends JFrame {
 	private void ListarParticipantes() {
 		JMenuItem mntmNewMenuItem_ListarParticipantes = new JMenuItem("Listar participantes");
 		mnNewMenu_2Participantes.add(mntmNewMenuItem_ListarParticipantes);
+		mntmNewMenuItem_ListarParticipantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarJTableJugadores();
+			}
+		});
 	}
 	
 	private void Pronostico() {
@@ -117,6 +123,13 @@ public class Inicio extends JFrame {
 	
 	private void ListarPronostico() {		
 		JMenuItem mntmNewMenuItem_ListarPronosticos = new JMenuItem("Listar pronosticos");
+		mntmNewMenuItem_ListarPronosticos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarJTablePronosticos();
+			}
+		});
+
+		
 		mnNewMenu_Pronostico.add(mntmNewMenuItem_ListarPronosticos);
 		
 		contentPane.add(menuBarSuperior);
@@ -127,6 +140,30 @@ public class Inicio extends JFrame {
 		mnNewMenuEquipos.add(mnNewMenu_Equipos_listar);
 		EquiposOrdenAlfabetico();
 		EquiposOrdenCantidadGoles();
+		ListarTodosLosEquipos();
+	}
+	
+	private void listarTodo() {
+		JMenuItem mntmNewMenuItemTodosLosDatos = new JMenuItem("Todo (Participantes, equipos, partidos jugados y pronosticos)");
+		mntmNewMenuItemTodosLosDatos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarJTableJugadores();
+				cargarJTableEquipos();
+				cargarJTablePartidos();
+				cargarJTablePronosticos();
+			}
+		});
+		menuBarSuperior.add(mntmNewMenuItemTodosLosDatos);
+	}
+	
+	private void ListarTodosLosEquipos() {
+		JMenuItem mntmNewMenuItemListarTodosLosEquipos = new JMenuItem("Todos");
+		mntmNewMenuItemListarTodosLosEquipos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarJTableEquipos();
+			}
+		});
+		mnNewMenu_Equipos_listar.add(mntmNewMenuItemListarTodosLosEquipos);
 	}
 	
 	private void EquiposOrdenAlfabetico() {
@@ -166,6 +203,17 @@ public class Inicio extends JFrame {
 		mnNewMenupartido.add(mnNewMenu_PartidosJugados_listar);
 		
 		JMenuItem mntmNewMenuItemAgregarPartidosJugadosListarPorGrupos = new JMenuItem("Por grupos");
+		mntmNewMenuItemAgregarPartidosJugadosListarPorGrupos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarJTablePartidos();
+			}
+		});
+		mnNewMenu_PartidosJugados_listar.add(mntmNewMenuItemAgregarPartidosJugadosListarPorGrupos);
+		
+		
+		
+		JMenuItem mntmNewMenuItemAgregarPartidosJugadosListarPorGrupos = new JMenuItem("Por grupos");
+		
 		mnNewMenu_PartidosJugados_listar.add(mntmNewMenuItemAgregarPartidosJugadosListarPorGrupos);
 		
 		JMenuItem mntmNewMenuItem_ListarPartidosPorCantidadDeGolesTotalesDelPartido = new JMenuItem("Por cantidad de goles totales");
