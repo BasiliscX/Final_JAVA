@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 
 public class Conexion {
-    private static final String USER = "root";
-    private static final String PASSWORD = "admin";
-    private static final String DATABASE = "codo_a_codo";
+    private static final String USER = "root"; // TODO: Reemplazar con nombre del usuario
+    private static final String PASSWORD = "admin"; // TODO: Reemplazar con contrasena del usuario
+    private static final String DATABASE = "pronosticos_db";
     private static final String DDBB_URL = String.format(
-            "jdbc:mysql://%s:%s@localhost:3306/%s?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true", USER, PASSWORD, DATABASE);
+            "jdbc:mysql://%s:%s@localhost:3306/%s?useSSL=false", USER, PASSWORD, DATABASE);
 
     private static BasicDataSource dataSource;
 
