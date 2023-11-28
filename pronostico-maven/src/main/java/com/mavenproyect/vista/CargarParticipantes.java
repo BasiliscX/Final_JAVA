@@ -12,6 +12,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import com.mavenproyect.database.*;
+import com.mavenproyect.model.Participante;
+
 public class CargarParticipantes extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -51,6 +54,7 @@ public class CargarParticipantes extends JFrame {
 		textField.setBounds(56, 92, 157, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
+
 	}
 	
 	private void BotonCancelar(){
@@ -75,5 +79,14 @@ public class CargarParticipantes extends JFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(137, 138, 89, 23);
 		contentPane.add(btnAceptar);
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			ParticipanteDAO nuevoParticipante = new ParticipanteDAO();
+			Participante participantes = new Participante();
+			String nombre = textField.getText();
+			participantes.setNombre(nombre);
+			nuevoParticipante.insertar(participantes);
+			}
+		});
 	}
 }

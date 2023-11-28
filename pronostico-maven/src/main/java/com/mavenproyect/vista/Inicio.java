@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.mavenproyect.model.*;
+import com.mavenproyect.database.*;
 
 public class Inicio extends JFrame {
 
@@ -229,10 +230,11 @@ public class Inicio extends JFrame {
 		tableModel.addColumn("Participante");
 		
  		int aux=0;
-		for(Participante participante:participantes) {
-			String nombre=participante.getNombre();
+ 		ParticipanteDAO participantes = new ParticipanteDAO();
+ 		List<Participante> todosLosParticipantes = participantes.seleccionarTodos();
+ 		for(Participante participan:todosLosParticipantes) {
+			String nombre=participan.getNombre();
 			tableModel.insertRow(aux++, new Object[] { nombre});
-				
 		}
 		int x=0,y=30;
 		int w=100,h=470;
