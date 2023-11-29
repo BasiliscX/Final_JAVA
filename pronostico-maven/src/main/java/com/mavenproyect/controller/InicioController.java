@@ -2,7 +2,6 @@ package com.mavenproyect.controller;
 
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.mavenproyect.database.EquipoDAO;
@@ -35,7 +34,7 @@ public class InicioController {
 		equipos = equipoDAO.seleccionarTodos();
 		partidos = partidoDAO.seleccionarTodos();
 		pronosticos = pronosticoDAO.seleccionarTodos();
-
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

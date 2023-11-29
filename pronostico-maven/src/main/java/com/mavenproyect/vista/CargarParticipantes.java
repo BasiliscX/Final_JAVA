@@ -20,6 +20,8 @@ public class CargarParticipantes extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	
+	public static boolean bandera=false;
 
 	public CargarParticipantes() {
 		setTitle("Cargar participante");
@@ -86,6 +88,15 @@ public class CargarParticipantes extends JFrame {
 			String nombre = textField.getText();
 			participantes.setNombre(nombre);
 			nuevoParticipante.insertar(participantes);
+			
+			bandera=true;
+			
+			dispose(); // cierra la ventana
+			/**
+			 * Cuando acepto el ingreso, debo actualizar la lista
+			 * de la ventana
+			 * */
+			
 			}
 		});
 	}

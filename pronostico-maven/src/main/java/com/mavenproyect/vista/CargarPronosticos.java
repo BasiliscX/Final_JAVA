@@ -3,6 +3,13 @@ package com.mavenproyect.vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.mavenproyect.database.ParticipanteDAO;
+import com.mavenproyect.model.Equipo;
+import com.mavenproyect.model.Participante;
+import com.mavenproyect.model.Partido;
+import com.mavenproyect.model.Pronostico;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -12,6 +19,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class CargarPronosticos extends JFrame {
@@ -19,7 +27,7 @@ public class CargarPronosticos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	
-	public CargarPronosticos() {
+	public CargarPronosticos(List<Partido> partidos,List<Equipo> equipos,List<Pronostico> pronosticos) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 423, 399);
 		contentPane = new JPanel();
@@ -31,7 +39,7 @@ public class CargarPronosticos extends JFrame {
 		
 		cargarLbls();
 		cargarBotones();
-		cargarJComboBox(/*Aqui recibo las listas*/);
+		cargarJComboBox(partidos,pronosticos);
 		cargarRadioButtons();
 	}
 	
@@ -73,22 +81,50 @@ public class CargarPronosticos extends JFrame {
 		contentPane.add(btnCargarPronosticoCancelar);
 		
 	}
-	private void cargarJComboBox(/*Aqui recibo las listas*/) {
-		// Datos por defecto, deberian ser reemplazados por la lista de la DB
-		String[] datosPorDefectoParticipantes = {"Guillermo", "Chechuu", "Facuu", "Patricio", "Nicolas"};
-		JComboBox<String> comboBoxParticipante = new JComboBox<>(datosPorDefectoParticipantes);
+	private void cargarJComboBox(List<Partido> partidos,List<Pronostico> pronosticos) {
+ 		
+		ParticipanteDAO participantes = new ParticipanteDAO();
+ 		List<Participante> todosLosParticipantes = participantes.seleccionarTodos();
+ 		String[]nombres=new String[todosLosParticipantes.size()];
+ 		int i=0;
+ 		for(Participante participan:todosLosParticipantes) {
+			nombres[i++]=participan.getNombre();
+ 		}
+		JComboBox<String> comboBoxParticipante = new JComboBox<>(nombres);
 		comboBoxParticipante.setSelectedItem(null);
 		comboBoxParticipante.setBounds(143, 115, 158, 22);
 		contentPane.add(comboBoxParticipante);
-		// Datos por defecto, deberian ser reemplazados por la lista de la DB		
-		String[] datosPorDefectoPartidos= {"Catar"+"/"+"Ecuador", "Senegal"+"/"+"Paises Bajos", "Catar"+"/"+"Senegal"};
-		JComboBox<String> comboBoxPartido = new JComboBox<>(datosPorDefectoPartidos);
+		
+ 		String[]datosPartidos=new String[partidos.size()];
+ 		i=0;
+ 		for(Partido partido:partidos) {
+ 			datosPartidos[i++]=partido.getEquipo1().getNombre()+"/"+partido.getEquipo2().getNombre();
+ 		}
+ 		
+ 		
+		JComboBox<String> comboBoxPartido = new JComboBox<>(datosPartidos);
 		comboBoxPartido.setSelectedItem(null);		
 		comboBoxPartido.setBounds(143, 159, 158, 22);
 		contentPane.add(comboBoxPartido);
-		// Datos por defecto, deberian ser reemplazados por la lista de la DB
-		String[] datosPorDefectoEquipos = {"Catar", "Ecuador", "Senegal", "Paises Bajos", "inglaterra"};
-		JComboBox<String> comboBoxEquipo = new JComboBox<>(datosPorDefectoEquipos);
+		
+		String equiposSeleccionados=new String(" / ");
+
+		/*
+ 		comboBoxPartido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener el elemento seleccionado
+        		equiposSeleccionados=(String) comboBoxPartido.getSelectedItem();
+                // Actualizar la etiqueta con el elemento seleccionado
+                label.setText("Elemento seleccionado: " + elementoSeleccionado);
+            }
+        });
+		 * */
+ 		String[]equipos=new String[2];
+ 		equipos=equiposSeleccionados.split("/");
+		
+		
+ 		JComboBox<String> comboBoxEquipo = new JComboBox<>(equipos);
 		comboBoxEquipo.setSelectedItem(null);
 		comboBoxEquipo.setBounds(143, 202, 158, 22);
 		contentPane.add(comboBoxEquipo);		

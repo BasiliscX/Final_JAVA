@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Conexion {
     private static final String USER = "root"; // TODO: Reemplazar con nombre del usuario
-    private static final String PASSWORD = "admin"; // TODO: Reemplazar con contrasena del usuario
+    private static final String PASSWORD = "1234"; // TODO: Reemplazar con contrasena del usuario
     private static final String DATABASE = "pronosticos_db";
     private static final String DDBB_URL = String.format(
             "jdbc:mysql://%s:%s@localhost:3306/%s?useSSL=false", USER, PASSWORD, DATABASE);
