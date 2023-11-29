@@ -89,9 +89,6 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				CargarParticipantes cargarParticipantes=new CargarParticipantes();
 				cargarParticipantes.setVisible(true);
-
-				System.out.println(CargarParticipantes.bandera);
-				
 			}
 		});
 		
@@ -122,7 +119,7 @@ public class Inicio extends JFrame {
 		JMenuItem mntmAgregarPronostico = new JMenuItem("Agregar pronostico");
 		mntmAgregarPronostico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CargarPronosticos cargarPronosticos = new CargarPronosticos(partidos,equipos,pronosticos);
+				CargarPronosticos cargarPronosticos = new CargarPronosticos(participantes,partidos,equipos,pronosticos);
 				cargarPronosticos.setVisible(true);
 			}
 		});

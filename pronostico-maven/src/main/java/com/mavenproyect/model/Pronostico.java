@@ -25,6 +25,10 @@ public class Pronostico {
 	private Equipo equipo;
 	private char opcion;
 
+	@Override
+	public String toString() {
+		return "Participante: "+participante.getNombre()+" - Partido: "+partido.getEquipo1().getNombre()+" / "+partido.getEquipo2().getNombre()+" Equipo: "+equipo.getNombre()+" Eleccion: "+opcion;
+	}
 
 	public int puntos() {
 		return -2;// HUBO UN ERROR DE LECTURA/COMPARACION
