@@ -34,6 +34,8 @@ public class CargarPronosticos extends JFrame {
 	private List<Partido> partidos;
 	private List<Pronostico> pronosticos;
 	private char eleccion;
+	JComboBox<String> comboBoxEquipo = new JComboBox<>();
+	
 	
 	public CargarPronosticos(List<Participante> participantes,List<Partido> partidos,List<Equipo> equipos,List<Pronostico> pronosticos) {
 		this.participantes=new ArrayList<Participante>();
@@ -122,13 +124,13 @@ public class CargarPronosticos extends JFrame {
  			datosPartidos[i++]=partido.getEquipo1().getNombre()+"/"+partido.getEquipo2().getNombre();
  		}
  		
- 		
-		JComboBox<String> comboBoxPartido = new JComboBox<>(datosPartidos);
-		comboBoxPartido.setSelectedItem(null);		
+ 		JComboBox<String> comboBoxPartido = new JComboBox<>(datosPartidos);
+		
+ 		comboBoxPartido.setSelectedItem(null);		
 		comboBoxPartido.setBounds(143, 159, 158, 22);
 		contentPane.add(comboBoxPartido);
 		
-		JComboBox<String> comboBoxEquipo = new JComboBox<>();
+		
 		//String equiposSeleccionados=" / ";
  		comboBoxPartido.addActionListener(new ActionListener() {
             @Override
@@ -148,13 +150,13 @@ public class CargarPronosticos extends JFrame {
 		comboBoxEquipo.setBounds(143, 202, 158, 22);
 		contentPane.add(comboBoxEquipo);
 		
-		BotonAceptar(datosPartidos,comboBoxParticipante,comboBoxEquipo);
+		BotonAceptar(comboBoxParticipante,comboBoxEquipo);
 	}
 	
 	/*
 	 * Aqui cargaria en la DB los elementos seleccionados
 	 * */
-	private void BotonAceptar(String[]datosPartidos,JComboBox<String> comboBoxParticipante,JComboBox<String> comboBoxEquipo) {
+	private void BotonAceptar(JComboBox<String> comboBoxParticipante,JComboBox<String> comboBoxEquipo) {
 		
 		/*
 		JButton btnCargarPronosticoAceptar = new JButton("Aceptar");
@@ -178,14 +180,13 @@ public class CargarPronosticos extends JFrame {
 			PronosticoDAO nuevoPronostico= new PronosticoDAO(nuevoParticipante,nuevoPartido,nuevoEquipo);
 			
 			Participante participante=getParticipante((String)comboBoxParticipante.getSelectedItem());
-			Partido partido=getPartido(datosPartidos);
+			Partido partido=getPartido();
 			Equipo equipo=getEquipo((String)comboBoxEquipo.getSelectedItem());
 			
 			Pronostico pronostico= new Pronostico();
 			pronostico.setParticipante(participante);
 			pronostico.setPartido(partido);
 			pronostico.setEquipo(equipo);
-			eleccion='P';
 			pronostico.setOpcion(eleccion);
 			
 			System.out.println(pronostico.toString());
@@ -207,15 +208,16 @@ public class CargarPronosticos extends JFrame {
 		return participante;
 	}
 
-	private Partido getPartido(String[] datosPartidos) {
+	private Partido getPartido() {
 		Partido partido=new Partido();
 		for(Partido reg:partidos) {
-			if(reg.getEquipo1().getNombre().equals(datosPartidos[0]) &&
-					reg.getEquipo2().getNombre().equals(datosPartidos[1])) {
-				return reg;
-			}
-		}
+			if(reg.getEquipo1().getNombre().toString().equals(comboBoxEquipo.getItemAt(0)) &&
+					reg.getEquipo2().getNombre().toString().equals(comboBoxEquipo.getItemAt(1))) {
+				return reg;}
+				}
+		
 		return partido;
+		
 	}
 	
 	private Equipo getEquipo(String nombre) {
@@ -250,12 +252,30 @@ public class CargarPronosticos extends JFrame {
 		contentPane.add(rdbtnNewRadioButtonGana);
 		contentPane.add(rdbtnEmpata);
 		
+		rdbtnNewRadioButtonGana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eleccion = 'G';
+			}
+			});
+		
+		rdbtnPierde.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eleccion = 'P';
+			}
+		});
+	
+		rdbtnEmpata.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eleccion = 'E';
+			}
+		});
+	}
+		
 		/*
 		JButton btnCargarPronosticoAcepta = new JButton("Aceptar");
 		btnCargarPronosticoAcepta.setBounds(217, 326, 180, 23);
 		contentPane.add(btnCargarPronosticoAcepta);
 		 * */
-	}
 	public void cerrarPanel() {
         int opcion = JOptionPane.showConfirmDialog(this, "¿Estás seguro de cancelar la carga?", "Confirmar Cierre", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
